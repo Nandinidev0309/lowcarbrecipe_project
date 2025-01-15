@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit Recipe</title>
+    <link rel="stylesheet" href="submit.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Submit Your Recipe</h1>
+      <form id="recipeForm">
+        <div class="form-group">
+          <label for="recipe-title">Recipe Title</label>
+          <input type="text" id="recipe-title" name="recipe-title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="ingredients">Ingredients</label>
+          <textarea
+            id="ingredients"
+            name="ingredients"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="instructions">Cooking Instructions</label>
+          <textarea
+            id="instructions"
+            name="instructions"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Upload Image</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="">--Select Category--</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+            <option value="snack">Snack</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Recipe</button>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const recipeForm = document.getElementById("recipeForm");
+        const recipesList = [];
+
+        recipeForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const title = document.getElementById("recipe-title").value;
+          const ingredients = document.getElementById("ingredients").value;
+          const instructions = document.getElementById("instructions").value;
+          const category = document.getElementById("category").value;
+          const image = document.getElementById("image").files[0];
+
+          if (title && ingredients && instructions && category && image) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+              const recipe = {
+                title: title,
+                ingredients: ingredients,
+                instructions: instructions,
+                category: category,
+                image: e.target.result,
+              };
+
+              recipesList.push(recipe);
+
+              localStorage.setItem("recipes", JSON.stringify(recipesList));
+
+              window.location.href = "/about.html";
+            };
+
+            reader.readAsDataURL(image);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

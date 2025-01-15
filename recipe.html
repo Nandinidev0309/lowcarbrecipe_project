@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="recipe.css">
+</head>
+
+<body>
+  <div class="main">
+    <a href="/" class="logo">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn5p4j_IveKM4KPGu_ip_UjO1GAibm7bcmgg&s" alt="Logo"
+        class="logo-img" />
+    </a>
+
+
+    <div class="hamburger" aria-expanded="false" aria-label="Toggle navigation menu">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="recipe.html" class="nav-link active">Recipes</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+    </ul>
+
+
+  </div>
+  </div>
+
+  <header class="hero">
+    <h1>Delicious Recipes</h1>
+    <h2>Welcome to our Recipe Collection !</h2>
+
+    <form id="searchForm">
+      <input type="text" id="searchInput" placeholder="Search Recipes" />
+      <button type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </header>
+
+
+  <div id="errorMessage" class="error-message"></div>
+  <div id="recipeCards" class="container">
+
+  </div>
+
+
+  <div id="recipeDetailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div style="display: flex;">
+        <div>
+          <h2 id="recipeName"></h2>
+          <img id="recipeImage" src="" alt="Recipe Image" />
+        </div>
+
+        <div>
+          <h3>Ingredients:</h3>
+          <ol id="recipeIngredients"></ol>
+        </div>
+
+        <div>
+          <h3>Steps:</h3>
+          <ol id="recipeSteps"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="recipe.js"></script>
+</body>
+
+</html>
